@@ -1,6 +1,5 @@
 let raw_data = [];
 
-// Function to create the HTML table for visits
 function createTable() {
     let str = "";
     for (let visit of raw_data) {
@@ -14,75 +13,66 @@ function createTable() {
     document.getElementById("mainTable").innerHTML = str;
 }
 
-
 async function getList() {
-    let response = await fetch('/visits/Visit');  // Change to '/points'
+    let response = await fetch('/visits/Visit');
     let data = await response.json();
     raw_data = data;
     createTable();
 }
 
 async function AddvisitToServer() {
-    let guardName = document.getElementById("guardname").value;
+    let guardName = document.getElementById("guardName").value;
     let pointId = document.getElementById("pointId").value;
     let notes = document.getElementById("notes").value;
 
-    let response = await fetch('/visits/Visit', {  
+    let url = "/visits/Visit";
+    let response = await fetch(url, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify({ guardname: guardName, pointId: pointId, notes: notes, })
+        body: JSON.stringify({ guardName, pointId, notes })
     });
-
-    if (response.ok) {
-        getList();
-    } else {
-        console.error('Error adding point:', response.statusText);
-    }
+    let data = await response.json();
+    console.log(data);
+    getList();
+    createTable(); 
 }
 
 async function EditVisit() {
+    let visitID = document.getElementById("updateVisitID").value;
     let updatedGuardName = document.getElementById("updatedGuardName").value;
     let updatedNotes = document.getElementById("updatedNotes").value;
-    let updatevisitId = document.getElementById("updatevisitId").value;
-    if (!updatevisitId || (!updatedGuardName && !updatedNotes)) {
+
+    if (!visitID || (!updatedGuardName && !updatedNotes)) {
         return;
     }
 
-    let response = await fetch(`/visits/Visit`, {  // Change to '/points'
+    let response = await fetch(`/visits/Visit/${visitID}`, {
         method: 'PATCH',
         headers: {
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify({ guardname: updatedGuardName,  notes: updatedNotes, idx: updatevisitId})  // Include 'idx' for identifying the point
+        body: JSON.stringify({ guardName: updatedGuardName, notes: updatedNotes })
     });
 
     if (response.ok) {
         getList();
     } else {
-        console.error('Error updating point:', response.statusText);
+        console.error('Error updating visit:', response.statusText);
     }
+    getList();
+    createTable();
 }
 
 async function DeletevisitFromServer() {
-    let visitID = document.getElementById("deleteVisitID").value;
-
-    try {
-        let response = await fetch(`/visits/Visit`, {  // Change to '/points'
-            method: 'DELETE',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({ idx: visitID })  // Include 'idx' for identifying the point
-        });
-
-        if (response.ok) {
-            getList();
-        } else {
-            console.error('Error deleting point:', response.statusText);
-        }
-    } catch (error) {
-        console.error('Error:', error);
-    }
+    let visit_pointId = document.getElementById("deleteVisitID").value;
+    let url = `/visits/Visit?id=${visit_pointId}`;
+    let response = await fetch(url, {
+        method: 'DELETE',
+    });
+    let data = await response.json();
+    console.log(data);
+    getList(); 
 }
+getList();
