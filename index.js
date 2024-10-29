@@ -11,10 +11,10 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'js')));
 
 
-const pointRoutes = require('./js/PointsEdit');
-const visitRoutes = require('./js/VisitsEdit');
-app.use('/points', pointRoutes);
-app.use('/visits', visitRoutes);
+const pointedit = require('./js/PointsEdit');
+const visitedit = require('./js/VisitsEdit');
+app.use('/points', pointedit);
+app.use('/visits', visitedit);
 
 const vb = require('./V_B');
 app.use('/', vb);
