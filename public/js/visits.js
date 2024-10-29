@@ -32,7 +32,7 @@ async function AddvisitToServer() {
         headers: {
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify({ guardname: guardName, pointId: pointId, notes: notes,})
+        body: JSON.stringify({ guardname: guardName, pointId: pointId, notes: notes, })
     });
 
     if (response.ok) {
@@ -44,10 +44,9 @@ async function AddvisitToServer() {
 
 async function EditVisit() {
     let updatedGuardName = document.getElementById("updatedGuardName").value;
-    let updatepointId = document.getElementById("updatepointId").value;
     let updatedNotes = document.getElementById("updatedNotes").value;
-
-    if (!updatepointId || (!updatedGuardName && !updatedNotes)) {
+    let updatevisitId = document.getElementById("updatevisitId").value;
+    if (!updatevisitId || (!updatedGuardName && !updatedNotes)) {
         return;
     }
 
@@ -56,7 +55,7 @@ async function EditVisit() {
         headers: {
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify({ guardname: updatedGuardName, pointId: updatepointId, notes: updatedNotes })  // Include 'idx' for identifying the point
+        body: JSON.stringify({ guardname: updatedGuardName,  notes: updatedNotes, idx: updatevisitId})  // Include 'idx' for identifying the point
     });
 
     if (response.ok) {
@@ -67,7 +66,7 @@ async function EditVisit() {
 }
 
 async function DeletevisitFromServer() {
-    let pointID = document.getElementById("deletePointID").value;
+    let visitID = document.getElementById("deleteVisitID").value;
 
     try {
         let response = await fetch(`/visits/Visit`, {  // Change to '/points'
@@ -75,7 +74,7 @@ async function DeletevisitFromServer() {
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({ idx: pointID })  // Include 'idx' for identifying the point
+            body: JSON.stringify({ idx: visitID })  // Include 'idx' for identifying the point
         });
 
         if (response.ok) {
