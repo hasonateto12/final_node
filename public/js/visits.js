@@ -35,44 +35,6 @@ async function AddvisitToServer() {
     });
     let data = await response.json();
     console.log(data);
-    getList();
+     await getList();
     createTable(); 
 }
-
-async function EditVisit() {
-    let visitID = document.getElementById("updateVisitID").value;
-    let updatedGuardName = document.getElementById("updatedGuardName").value;
-    let updatedNotes = document.getElementById("updatedNotes").value;
-
-    if (!visitID || (!updatedGuardName && !updatedNotes)) {
-        return;
-    }
-
-    let response = await fetch(`/visits/Visit/${visitID}`, {
-        method: 'PATCH',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({ guardName: updatedGuardName, notes: updatedNotes })
-    });
-
-    if (response.ok) {
-        getList();
-    } else {
-        console.error('Error updating visit:', response.statusText);
-    }
-    getList();
-    createTable();
-}
-
-async function DeletevisitFromServer() {
-    let visit_pointId = document.getElementById("deleteVisitID").value;
-    let url = `/visits/Visit?id=${visit_pointId}`;
-    let response = await fetch(url, {
-        method: 'DELETE',
-    });
-    let data = await response.json();
-    console.log(data);
-    getList(); 
-}
-getList();
