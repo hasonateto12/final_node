@@ -11,12 +11,13 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cors());
 app.use(express.static(path.join(__dirname, 'public'))); 
 
-// Import the points routes
-const pointsRoutes = require('./public/js/PointsEdit');  
-app.use('/points', pointsRoutes);
 
-const visitsRoutes = require('./public/js/VisitsEdit'); 
-app.use('/visits', visitsRoutes);
+const points = require('./public/js/PointsEdit');  
+app.use('/points', points);
+
+
+const visits = require('./public/js/VisitsEdit'); 
+app.use('/visits', visits);
 
 app.listen(port, () => {
     console.log(`Now listening on http://localhost:${port}`);
