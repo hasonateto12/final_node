@@ -13,7 +13,7 @@ function createTable() {
 }
 
 async function getList() {
-    let response = await fetch('/points/List');
+    let response = await fetch('/points');  // Change to '/points'
     let data = await response.json();
     raw_data = data;
     createTable();
@@ -23,7 +23,7 @@ async function AddpointToServer() {
     let name = document.getElementById("pointName").value;
     let location = document.getElementById("pointLocation").value;
 
-    let response = await fetch('/points/Add', {
+    let response = await fetch('/points', {  // Change to '/points'
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -38,7 +38,6 @@ async function AddpointToServer() {
     }
 }
 
-
 async function EditPoint() {
     let pointID = document.getElementById("updatePointID").value;
     let updatedName = document.getElementById("updatedPointName").value;
@@ -48,12 +47,12 @@ async function EditPoint() {
         return;
     }
 
-    let response = await fetch(`/points/Edit/${pointID}`, {
+    let response = await fetch(`/points`, {  // Change to '/points'
         method: 'PATCH',
         headers: {
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify({ name: updatedName, location: updatedLocation })
+        body: JSON.stringify({ idx: pointID, full_name: updatedName, location: updatedLocation })  // Include 'idx' for identifying the point
     });
 
     if (response.ok) {
@@ -67,8 +66,12 @@ async function DeletepointFromServer() {
     let pointID = document.getElementById("deletePointID").value;
 
     try {
-        let response = await fetch(`/points/delete/${pointID}`, {
-            method: 'DELETE'
+        let response = await fetch(`/points`, {  // Change to '/points'
+            method: 'DELETE',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ idx: pointID })  // Include 'idx' for identifying the point
         });
 
         if (response.ok) {
@@ -80,7 +83,3 @@ async function DeletepointFromServer() {
         console.error('Error:', error);
     }
 }
-
-
-
-getList();
