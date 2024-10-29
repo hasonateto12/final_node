@@ -5,7 +5,6 @@ function createTable() {
     for (let line of raw_data) {
         str += "<tr>";
         str += `<td>${line.name}</td>`;
-        str += `<td>${line.id}</td>`;
         str += `<td>${line.location}</td>`;
         str += "</tr>";
     }
@@ -13,7 +12,7 @@ function createTable() {
 }
 
 async function getList() {
-    let response = await fetch('/points');  // Change to '/points'
+    let response = await fetch('/points/Point');  // Change to '/points'
     let data = await response.json();
     raw_data = data;
     createTable();
@@ -23,7 +22,7 @@ async function AddpointToServer() {
     let name = document.getElementById("pointName").value;
     let location = document.getElementById("pointLocation").value;
 
-    let response = await fetch('/points', {  // Change to '/points'
+    let response = await fetch('/points/Point', {  // Change to '/points'
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -39,20 +38,20 @@ async function AddpointToServer() {
 }
 
 async function EditPoint() {
-    let pointID = document.getElementById("updatePointID").value;
     let updatedName = document.getElementById("updatedPointName").value;
     let updatedLocation = document.getElementById("updatedPointLocation").value;
+    let pointID = document.getElementById("updatePointID").value;
 
     if (!pointID || (!updatedName && !updatedLocation)) {
         return;
     }
 
-    let response = await fetch(`/points`, {  // Change to '/points'
+    let response = await fetch(`/points/Point`, {  // Change to '/points'
         method: 'PATCH',
         headers: {
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify({ idx: pointID, full_name: updatedName, location: updatedLocation })  // Include 'idx' for identifying the point
+        body: JSON.stringify({full_name: updatedName, location: updatedLocation, idx: pointID})  // Include 'idx' for identifying the point
     });
 
     if (response.ok) {
@@ -66,7 +65,7 @@ async function DeletepointFromServer() {
     let pointID = document.getElementById("deletePointID").value;
 
     try {
-        let response = await fetch(`/points`, {  // Change to '/points'
+        let response = await fetch(`/points/Point`, {  // Change to '/points'
             method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json'
