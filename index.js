@@ -8,13 +8,20 @@ app.use(bodyParser.urlencoded({extended: false}));
 
 app.set("public", "html");
 app.use(express.static(path.join(__dirname, 'public')));
-app.use(express.static(path.join(__dirname, 'js')));
 
 
-const pointedit = require('./js/PointsEdit');
-const visitedit = require('./js/VisitsEdit');
-app.use('/points', pointedit);
-app.use('/visits', visitedit);
+app.get('/api/points', (req, res) => {
+    const points = [
+        { id: 1, name: "Point A", location: "Location A" },
+        { id: 2, name: "Point B", location: "Location B" }
+    ];
+    res.json(points);
+});
+
+const point = require('./public/js/PointsEdit');
+const visit = require('./public/js/VisitsEdit');
+app.use('/points', point);
+app.use('/visits', visit);
 
 const vb = require('./V_B');
 app.use('/', vb);
