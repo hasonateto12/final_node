@@ -4,8 +4,8 @@ function createTable() {
     let str = "";
     for (let line of raw_data) {
         str += "<tr>";
-        str += `<td>${line.id}</td>`;
         str += `<td>${line.name}</td>`;
+        str += `<td>${line.id}</td>`;
         str += `<td>${line.location}</td>`;
         str += "</tr>";
     }
@@ -19,7 +19,7 @@ async function getList() {
     createTable();
 }
 
-async function addNewPoint() {
+async function AddpointToServer() {
     let name = document.getElementById("pointName").value;
     let location = document.getElementById("pointLocation").value;
 
@@ -38,25 +38,8 @@ async function addNewPoint() {
     }
 }
 
-async function deletePoint() {
-    let pointID = document.getElementById("deletePointID").value;
 
-    try {
-        let response = await fetch(`/points/delete/${pointID}`, {
-            method: 'DELETE'
-        });
-
-        if (response.ok) {
-            getList();
-        } else {
-            console.error('Error deleting point:', response.statusText);
-        }
-    } catch (error) {
-        console.error('Error:', error);
-    }
-}
-
-async function editPoint() {
+async function EditPoint() {
     let pointID = document.getElementById("updatePointID").value;
     let updatedName = document.getElementById("updatedPointName").value;
     let updatedLocation = document.getElementById("updatedPointLocation").value;
@@ -79,6 +62,25 @@ async function editPoint() {
         console.error('Error updating point:', response.statusText);
     }
 }
+
+async function DeletepointFromServer() {
+    let pointID = document.getElementById("deletePointID").value;
+
+    try {
+        let response = await fetch(`/points/delete/${pointID}`, {
+            method: 'DELETE'
+        });
+
+        if (response.ok) {
+            getList();
+        } else {
+            console.error('Error deleting point:', response.statusText);
+        }
+    } catch (error) {
+        console.error('Error:', error);
+    }
+}
+
 
 
 getList();
