@@ -1,14 +1,17 @@
 const express = require('express');
-const port = 4225;
-const app = express();
-const path = require('path');
-app.use(express.json());
+const cors = require('cors'); // Import cors
 const bodyParser = require('body-parser');
-app.use(bodyParser.urlencoded({extended: false}));
+const path = require('path');
+
+const app = express();
+const port = 4225;
+
+app.use(cors()); // Use CORS middleware
+app.use(express.json());
+app.use(bodyParser.urlencoded({ extended: false }));
 
 app.set("public", "html");
 app.use(express.static(path.join(__dirname, 'public')));
-
 
 app.get('/api/points', (req, res) => {
     const points = [
@@ -16,6 +19,11 @@ app.get('/api/points', (req, res) => {
         { id: 2, name: "Point B", location: "Location B" }
     ];
     res.json(points);
+});
+
+app.post('/api/points', (req, res) => {
+    const newPoint = req.body;
+    res.status(201).json(newPoint);
 });
 
 const point = require('./public/js/PointsEdit');
@@ -26,6 +34,7 @@ app.use('/visits', visit);
 const vb = require('./V_B');
 app.use('/', vb);
 
-app.listen(port, () => {            //server starts listening for any attempts from a client to connect at port: {port}
+app.listen(port, () => {
     console.log(`Now listening on port http://localhost:${port}`);
 });
+
