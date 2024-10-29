@@ -3,50 +3,56 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Points</title>
     <link rel="stylesheet" href="main.css">
+</head>
 <body>
+    <div class="container">
+        <header>
+            <h1>Points Management</h1>
+        </header>
 
-<h1>POINTS Page</h1>
+        <section>
+            <h2>Point Records</h2>
+            <table>
+                <thead>
+                <tr>
+                    <th>Point Name</th>
+                    <th>Point Location</th>
+                </tr>
+                </thead>
+                <tbody id="mainTable"></tbody>
+            </table>
+        </section>
 
-<table>
-    <thead>
-    <tr>
-        <th>Name Point</th>
-        <th>Point Location</th>
-    </tr>
-    </thead>
-    <tbody id="mainTable"> </tbody>
-</table>
+        <section class="form-section">
+            <h2>Add a New Point</h2>
+            <input type="text" id="pointName" placeholder="Point Name" required>
+            <input type="text" id="pointLocation" placeholder="Point Location" required>
+            <button onclick="AddpointToServer()">Add Point</button>
+        </section>
 
-<h2>Add a new point </h2>
-<br>
-<input type="text" id="pointName" placeholder="Name of point" required>
-<input type="text" id="pointLocation" placeholder="Location of point" required>
-<button onclick="AddpointToServer()">add a point</button>
-<br><br>
+        <section class="form-section">
+            <h2>Edit Point</h2>
+            <input type="text" id="updatedPointName" placeholder="Updated Point Name">
+            <input type="text" id="updatedPointLocation" placeholder="Updated Point Location">
+            <input type="text" id="updatePointID" placeholder="Point ID to Update">
+            <button onclick="EditPoint()">Edit Point</button>
+        </section>
 
-<h2>Edit point</h2>
-<br>
-<input type="text" id="updatedPointName" placeholder="name edited">
-<input type="text" id="updatePointID" placeholder="id">
-<input type="text" id="updatedPointLocation" placeholder="Location edited">
-<button onclick="EditPoint()">edit point</button>
+        <section class="form-section">
+            <h2>Delete a Point</h2>
+            <input type="text" id="deletePointID" placeholder="Enter Point ID">
+            <button onclick="DeletepointFromServer()">Delete Point</button>
+        </section>
 
-<br><br>
-
-<h2>Delete point </h2>
-<br>
-<input type="text" id="deletePointID" placeholder="delete a point by id">
-<button onclick="DeletepointFromServer()">delete a point by id</button>
-
-
-<br><br>
-<button onclick="window.location.href='///C:/Users/hassu/OneDrive/final_node/public/visits.html'"> to visits page</button>
-
-<script src="js/points.js"></script>
+        <footer>
+            <button onclick="window.location.href='/visits.html'" class="nav-button">Go to Visits Page</button>
+        </footer>
+    </div>
+    
+    <script src="js/points.js"></script>
 </body>
 </html>
