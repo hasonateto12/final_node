@@ -1,26 +1,19 @@
 const express = require('express');
-const port = 4225;
-const app = express();
-const path = require('path');
-app.use(express.json());
 const bodyParser = require('body-parser');
-app.use(bodyParser.urlencoded({extended: false}));
-
 const cors = require('cors');
+const path = require('path');
+
+const app = express();
+const port = 4225;
+
+app.use(express.json());
+app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cors());
+app.use(cors.static(path.join(__dirname, 'public')));  // Serve static files from public directory
 
-app.set("public", "html");
-app.use(express.static(path.join(__dirname, 'public')));
+const pointsRoutes = require('./jsedit/PointsEdit');
+app.use('/points', pointsRoutes);
 
-
-const point = require('./public/js/PointsEdit');
-const visit = require('./public/js/VisitsEdit');
-app.use('/points', point);
-app.use('/visits', visit);
-
-const vb = require('./V_B');
-app.use('/', vb);
-
-app.listen(port, () => {            //server starts listening for any attempts from a client to connect at port: {port}
-    console.log(`Now listening on port http://localhost:${port}`);
+app.listen(port, () => {
+    console.log(`Now listening on http://localhost:${port}`);
 });
