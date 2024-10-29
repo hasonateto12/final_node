@@ -1,8 +1,8 @@
-let raw_data = [];
+let rd = [];
 
 function createTable() {
     let str = "";
-    for (let line of raw_data) {
+    for (let line of rd) {
         str += "<tr>";
         str += `<td>${line.name}</td>`;
         str += `<td>${line.location}</td>`;
@@ -12,9 +12,9 @@ function createTable() {
 }
 
 async function getList() {
-    let response = await fetch('/points/Point');  // Change to '/points'
+    let response = await fetch('/points/Point'); 
     let data = await response.json();
-    raw_data = data;
+    rd = data;
     createTable();
 }
 
@@ -22,7 +22,7 @@ async function AddpointToServer() {
     let name = document.getElementById("pointName").value;
     let location = document.getElementById("pointLocation").value;
 
-    let response = await fetch('/points/Point', {  // Change to '/points'
+    let response = await fetch('/points/Point', {  
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -46,12 +46,12 @@ async function EditPoint() {
         return;
     }
 
-    let response = await fetch(`/points/Point`, {  // Change to '/points'
+    let response = await fetch(`/points/Point`, {  
         method: 'PATCH',
         headers: {
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify({full_name: updatedName, location: updatedLocation, idx: pointID})  // Include 'idx' for identifying the point
+        body: JSON.stringify({full_name: updatedName, location: updatedLocation, idx: pointID})  
     });
 
     if (response.ok) {
@@ -65,12 +65,12 @@ async function DeletepointFromServer() {
     let pointID = document.getElementById("deletePointID").value;
 
     try {
-        let response = await fetch(`/points/Point`, {  // Change to '/points'
+        let response = await fetch(`/points/Point`, {  
             method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({ idx: pointID })  // Include 'idx' for identifying the point
+            body: JSON.stringify({ idx: pointID })  
         });
 
         if (response.ok) {
