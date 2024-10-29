@@ -1,70 +1,104 @@
-body {
+* {
+    box-sizing: border-box;
     font-family: "Helvetica Neue", sans-serif;
-    background-color: #49a800;
     margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: #f3f7fa;
+    color: #34495e;
     padding: 20px;
 }
 
-h1 {
+.container {
+    max-width: 800px;
+    margin: auto;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+header h1 {
     text-align: center;
-    color: #1a237e;
-    border-bottom: 4px solid #5c6bc0;
-    padding: 10px 0;
+    color:  #00129a;
+    border-bottom: 3px solid #00129a;
+    padding-bottom: 10px;
     font-weight: bold;
+}
+
+h2 {
+    color:#00129a;
+    margin-top: 25px;
+    font-weight: bold;
+    padding-bottom: 5px;
+    border-bottom: 2px solid #ffffff; /* Adds a border at the bottom */
 }
 
 table {
     width: 100%;
     border-collapse: collapse;
     margin: 20px 0;
-    background-color: white;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+    border-radius: 8px;
+    overflow: hidden;
 }
 
 th, td {
-    border: 1px solid #cfd8dc;
     padding: 12px;
     text-align: left;
-    color: #37474f;
+    border-bottom: 1px solid #ecf0f1;
 }
 
 th {
-    background-color: #3949ab;
-    color: #ffffff;
-    font-weight: 600;
+    background-color:  #00129a;
+    color: #fff;
+}
+
+button, input[type="text"] {
+    display: inline-block;
+    margin: 10px 5px;
+    padding: 10px 12px;
+    font-size: 14px;
+    border: 1px solid #ecf0f1;
+    border-radius: 4px;
 }
 
 button {
-    background-color: #1e88e5;
-    color: #ffffff;
-    border: none;
-    padding: 8px 12px;
+    background-color:  #00129a;
+    color: #fff;
     cursor: pointer;
-    margin: 8px 5px;
-    border-radius: 4px;
-    font-size: 14px;
     transition: background-color 0.3s ease;
 }
 
 button:hover {
-    background-color: #0057ba;
+    background-color:  #00129a;
 }
 
 input[type="text"] {
-    padding: 8px;
-    margin: 10px 5px;
-    width: calc(50% - 26px);
-    border: 1px solid #cfd8dc;
+    width: calc(50% - 24px);
+    color: #34495e;
+}
+
+.form-section {
+    margin: 20px 0;
+}
+
+.nav-button {
+    display: block;
+    width: 100%;
+    background-color:  #00129a;
+    color: #fff;
+    text-align: center;
+    padding: 12px;
     border-radius: 4px;
-    font-size: 14px;
-}
-
-h2 {
-    color: #303f9f;
-    margin-top: 25px;
+    font-size: 16px;
     font-weight: bold;
+    cursor: pointer;
+    margin-top: 20px;
 }
 
-#mainTable {
-    margin: 30px 0;
+.nav-button:hover {
+    background-color:  #00129a;
 }
