@@ -7,7 +7,7 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Points</title>
+    <title>Visits</title>
     <link rel="stylesheet" href="main.css">
 </head>
 <body>
@@ -17,8 +17,8 @@
         <thead>
         <tr>
             <th>Guard name</th>
-            <th>ID</th>
-            <th>notes</th>
+            <th>ID Of Point</th>
+            <th>Notes</th>
             <th>Visiting time</th>
         </tr>
         </thead>
@@ -27,7 +27,7 @@
     
     <h2>Add a new visit</h2>
     <br>
-    <input type="text" id="guardName" placeholder="Guard Name" required>
+    <input type="text" id="guardname" placeholder="Guard Name" required>
     <input type="text" id="pointId" placeholder="Point ID" required>
     <input type="text" id="notes" placeholder="Notes">
     <button onclick="AddvisitToServer()">Add visit</button>
@@ -36,9 +36,9 @@
 
     <h2>Edit visit</h2>
     <br>
-    <input type="text" id="updateVisitID" placeholder="Enter Visit ID">
     <input type="text" id="updatedGuardName" placeholder="Updated Guard Name">
     <input type="text" id="updatedNotes" placeholder="Updated Notes">
+    <input type="text" id="updatevisitId" placeholder="Updated Visit ID">
     <button onclick="EditVisit()">Edit visit</button>
     
     <br><br>
@@ -51,7 +51,7 @@
     <br><br>
     
     
-    <button onclick="window.location.href='///C:/Users/hassu/OneDrive/final_node/public/points.html'"> to points page</button>
+    <button onclick="window.location.href='/points.html'"> to points page</button>
     <script src="js/visits.js"></script>
 </body>
 </html>
