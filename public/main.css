@@ -1,6 +1,70 @@
-body{direction: rtl;background-color: bisque;}
-#msg{
-    color: darkgreen;
-    font-size: 30px;
-    display: none;
+body {
+    font-family: "Helvetica Neue", sans-serif;
+    background-color: #e8f0fe;
+    margin: 0;
+    padding: 20px;
+}
+
+h1 {
+    text-align: center;
+    color: #1a237e;
+    border-bottom: 4px solid #5c6bc0;
+    padding: 10px 0;
+    font-weight: bold;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    background-color: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+th, td {
+    border: 1px solid #cfd8dc;
+    padding: 12px;
+    text-align: left;
+    color: #37474f;
+}
+
+th {
+    background-color: #3949ab;
+    color: #ffffff;
+    font-weight: 600;
+}
+
+button {
+    background-color: #1e88e5;
+    color: #ffffff;
+    border: none;
+    padding: 8px 12px;
+    cursor: pointer;
+    margin: 8px 5px;
+    border-radius: 4px;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #00c00d;
+}
+
+input[type="text"] {
+    padding: 8px;
+    margin: 10px 5px;
+    width: calc(50% - 26px);
+    border: 1px solid #cfd8dc;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+h2 {
+    color: #303f9f;
+    margin-top: 25px;
+    font-weight: bold;
+}
+
+#mainTable {
+    margin: 30px 0;
 }
