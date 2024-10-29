@@ -1,0 +1,60 @@
+<!Doctype html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Visits</title>
+    <link rel="stylesheet" href="main.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Visits Management</h1>
+        </header>
+        
+        <section>
+            <table>
+                <thead>
+                <tr>
+                    <th>Guard Name</th>
+                    <th>Point ID</th>
+                    <th>Notes</th>
+                    <th>Visiting Time</th>
+                </tr>
+                </thead>
+                <tbody id="mainTable"></tbody>
+            </table>
+        </section>
+
+        <section class="form-section">
+            <h2>Add a New Visit</h2>
+            <input type="text" id="guardname" placeholder="Guard Name" required>
+            <input type="text" id="pointId" placeholder="Point ID" required>
+            <input type="text" id="notes" placeholder="Notes">
+            <button onclick="AddvisitToServer()">Add Visit</button>
+        </section>
+
+        <section class="form-section">
+            <h2>Edit Visit</h2>
+            <input type="text" id="updatedGuardName" placeholder="Updated Guard Name">
+            <input type="text" id="updatedNotes" placeholder="Updated Notes">
+            <input type="text" id="updatevisitId" placeholder="Visit ID to Update">
+            <button onclick="EditVisit()">Edit Visit</button>
+        </section>
+
+        <section class="form-section">
+            <h2>Delete a Visit</h2>
+            <input type="text" id="deleteVisitID" placeholder="Enter Visit ID">
+            <button onclick="DeletevisitFromServer()">Delete Visit</button>
+        </section>
+
+        <footer>
+            <button onclick="window.location.href='/points.html'" class="nav-button">Go to Points Page</button>
+        </footer>
+    </div>
+    
+    <script src="js/visits.js"></script>
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!Doctype html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Points</title>
+    <link rel="stylesheet" href="main.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Points Management</h1>
+        </header>
+
+        <section>
+            <table>
+                <thead>
+                <tr>
+                    <th>Point Name</th>
+                    <th>Point Location</th>
+                </tr>
+                </thead>
+                <tbody id="mainTable"></tbody>
+            </table>
+        </section>
+
+        <section class="form-section">
+            <h2>Add a New Point</h2>
+            <input type="text" id="pointName" placeholder="Point Name" required>
+            <input type="text" id="pointLocation" placeholder="Point Location" required>
+            <button onclick="AddpointToServer()">Add Point</button>
+        </section>
+
+        <section class="form-section">
+            <h2>Edit Point</h2>
+            <input type="text" id="updatedPointName" placeholder="Updated Point Name">
+            <input type="text" id="updatedPointLocation" placeholder="Updated Point Location">
+            <input type="text" id="updatePointID" placeholder="Point ID to Update">
+            <button onclick="EditPoint()">Edit Point</button>
+        </section>
+
+        <section class="form-section">
+            <h2>Delete a Point</h2>
+            <input type="text" id="deletePointID" placeholder="Enter Point ID">
+            <button onclick="DeletepointFromServer()">Delete Point</button>
+        </section>
+
+        <footer>
+            <button onclick="window.location.href='/visits.html'" class="nav-button">Go to Visits Page</button>
+        </footer>
+    </div>
+    
+    <script src="js/points.js"></script>
+</body>
+</html>

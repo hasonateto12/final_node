@@ -1,0 +1,6 @@
+body{direction: rtl;background-color: bisque;}
+#msg{
+    color: darkgreen;
+    font-size: 30px;
+    display: none;
+}
