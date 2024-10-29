@@ -1,10 +1,7 @@
 const express = require('express');
 const router = express.Router();
 
-let visits=[
-    {guardname:"teto",pointId:1,notes:"finished",},
-    {guardname:"hasona",pointId:2,notes:"finished",},
-];
+let visits=[];
 
 router.get('/Visit', (req, res) => {
     res.status(200).json(visits);
