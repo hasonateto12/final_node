@@ -2,8 +2,8 @@ const express = require('express');
 const router = express.Router();
 
 let visits=[
-    {guardname:"teto",pointId:1,notes:"finished",visitTime:new Date()},
-    {guardname:"teto",pointId:2,notes:"finished",visitTime:new Date()},
+    {guardname:"teto",pointId:1,notes:"finished",},
+    {guardname:"hasona",pointId:2,notes:"finished",},
 ];
 
 router.post('/Visit', (req, res) => {
@@ -11,8 +11,9 @@ router.post('/Visit', (req, res) => {
     visit.guardname=req.body.guardname;
     visit.pointId =req.body.pointId ;
     visit.notes =req.body.notes ;
-    let visitTime= visit.visitTime=new Date();
+    let visitTime= new Date();
     visits.push(visit);
+    visits.push(visitTime);
     res.status(200).json("ok");
 });
 router.patch('/Visit', (req, res) => {
