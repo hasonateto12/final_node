@@ -9,13 +9,14 @@ const port = 4225;
 app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cors());
-app.use(express.static(path.join(__dirname, 'public')));  // Serve static files from public directory
+app.use(express.static(path.join(__dirname, 'public'))); 
 
 // Import the points routes
-const pointsRoutes = require('./public/js/PointsEdit');  // Adjust the path if necessary
-
-// Use the points routes
+const pointsRoutes = require('./public/js/PointsEdit');  
 app.use('/points', pointsRoutes);
+
+const visitsRoutes = require('./public/js/VisitsEdit'); 
+app.use('/visits', visitsRoutes);
 
 app.listen(port, () => {
     console.log(`Now listening on http://localhost:${port}`);
