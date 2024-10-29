@@ -1,6 +1,6 @@
 body {
     font-family: "Helvetica Neue", sans-serif;
-    background-color: #e8f0fe;
+    background-color: #49a800;
     margin: 0;
     padding: 20px;
 }
@@ -47,7 +47,7 @@ button {
 }
 
 button:hover {
-    background-color: #00c00d;
+    background-color: #0057ba;
 }
 
 input[type="text"] {
