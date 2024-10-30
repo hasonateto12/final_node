@@ -1,10 +1,7 @@
 const express = require('express');
 const router = express.Router();
 
-let points = [
-    { name: "Point1", location: 1 },
-    { name: "Point2", location: 2 },
-];
+let points = [];
 
 router.get('/Point', (req, res) => {
     res.status(200).json(points);
@@ -43,4 +40,4 @@ router.delete('/Point', (req, res) => {
     }
 });
 
-module.exports = router;  // Export the router
+module.exports = router;  
